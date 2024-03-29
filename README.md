@@ -1,4 +1,4 @@
-![Banner Git Cheat](https://i.imgur.com/dHpKwAf.png)
+![Banner RPG JAVA](https://i.imgur.com/LluE8xX.png)
 #
 
 ## 1 - Proposta
@@ -7,26 +7,25 @@
 </p>
 
 ## 2 - Diagrama de classe
+![Foto do diagrama de clase](https://i.imgur.com/z6LoInB.png)
 
 ## 3 - Regra de Negócio
-### Classe JogoRPG:
-
-Método main(String[] args): Inicia o jogo.
-### 1- Classe Jogo:
-
-Atributos jogador e inimigo.
-Método iniciarJogo(): Começa uma batalha entre jogador e inimigo.
-### 2- Classe Jogador:
-
-Atributos vida, ataque, armadura.
-Método atacar(Inimigo inimigo): Reduz a vida do inimigo.
-Método estaVivo(): Verifica se o jogador está vivo.
-
-### 3- Classes Guerreiro e Mago (subclasses de Jogador):
-
-Métodos específicos de cada classe.
-### 4- Classe Inimigo:
-
-Atributos vida e ataque.
-Método atacar(Jogador jogador): Reduz a vida do jogador.
-Método vidaAtual(): Verifica se o inimigo está vivo.
+- Início do Jogo:
+  - O jogo começa com uma mensagem de boas-vindas ao jogador.
+  - O jogador é solicitado a escolher uma classe de personagem (Guerreiro ou Mago).
+  - Com base na escolha do jogador, um objeto do tipo Jogador é instanciado com as características específicas da classe escolhida.
+- Inicialização do Jogo:
+  - O jogo exibe as características iniciais do jogador e do inimigo, incluindo vida, ataque e armadura.
+  - O jogador escolhe um número de 1 a 10 para determinar quem inicia o jogo. Se o número escolhido pelo jogador for igual ao número escolhido pelo inimigo, o jogador deve escolher novamente até obter um número diferente.
+- Turnos do Jogo:
+  - O jogo alterna entre os turnos do jogador e do inimigo.
+  - Em cada turno, o jogador ataca o inimigo usando o método atacar do objeto Jogador, passando o ataque do jogador e a armadura do inimigo como parâmetros.
+  - O inimigo ataca o jogador da mesma forma, usando o método atacar do objeto Inimigo.
+  - Se o ataque do jogador for bem-sucedido (ou seja, o dado rolado for maior ou igual à armadura do inimigo), o inimigo sofre dano.
+  - Se o ataque do inimigo for bem-sucedido, o jogador sofre dano.
+  - Se a vida de um personagem cair para 0 ou menos, o jogo termina com uma mensagem de vitória ou derrota, dependendo de quem morreu primeiro.
+- Fim do Jogo:
+  - O jogo termina quando um dos personagens (jogador ou inimigo) morre.
+  - Se o jogador morrer, o jogo exibe uma mensagem de "Game Over".
+  - Se o inimigo morrer, o jogo exibe uma mensagem de "Vitória".
+ 
