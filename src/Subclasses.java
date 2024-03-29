@@ -1,15 +1,16 @@
 import java.util.Random;
 class Guerreiro extends Jogador {
     public Guerreiro() {
-        super(150, 8, 14);
+        super(150, 10, 14);
     }
 
     @Override
-    public int atacar() {
+    public int atacar(int dano, int armadura) {
         Random rand = new Random();
         int dado = rand.nextInt(20) + 1;
-        if (dado >= getArmaduraInimigo()) {
-            int dano = rand.nextInt(8) + 1;
+
+        if (dado >= armadura) {
+            dano = rand.nextInt(dano) + 1;
             System.out.println("Você acertou o inimigo! O dado que rolou foi " + dado + ", e causou " + dano + " de dano!");
             return dano;
         } else {
@@ -21,15 +22,16 @@ class Guerreiro extends Jogador {
 
 class Mago extends Jogador {
     public Mago() {
-        super(100, 12, 12);
+        super(125, 12, 12);
     }
     @Override
-    public int atacar() {
+    public int atacar(int dano, int armadura) {
         Random rand = new Random();
         int dado = rand.nextInt(20) + 1;
-        if (dado >= getArmaduraInimigo()) {
-            int dano = rand.nextInt(12) + 1;
-            System.out.println("Você acertou o inimigo! O dado que rolou foi " + dado + ", e causou " + dano + " de dano!");
+
+        if (dado >= armadura) {
+            dano = rand.nextInt(dano) + 1;
+            System.out.println("Você acertou o inimigo! O dado que rolou foi " + dado);
             return dano;
         } else {
             System.out.println("Você errou o ataque! O dado que rolou foi " + dado);
@@ -41,29 +43,34 @@ class Mago extends Jogador {
 //INIMIGOS
 class Inimigo extends Jogador {
     public Inimigo() {
-        super(120, 12, 12);
+        super(130, 11, 13);
     }
 
     @Override
-    public int getArmaduraInimigo() {
-        return super.getArmadura();
-    }
-
-    public int getVidaInimigo() {
-        return super.vida;
-    }
-
-    @Override
-    public int atacar() {
+    public int atacar(int dano, int armadura) {
         Random rand = new Random();
         int dado = rand.nextInt(20) + 1;
-        if (dado >= getArmaduraJogador()) {
-            int dano = rand.nextInt(12) + 1;
-            System.out.println("Você acertou o inimigo! O dado que rolou foi " + dado + ", e causou " + dano + " de dano!");
+
+        if (dado >= armadura) {
+            dano = rand.nextInt(dano) + 1;
+            System.out.println("O inimigo te acertou! O dado que rolou foi " + dado);
             return dano;
         } else {
-            System.out.println("Você errou o ataque! O dado que rolou foi " + dado);
+            System.out.println("Inimigo errou o ataque! O dado que rolou foi " + dado);
             return 0;
+        }
+    }
+
+    public void vidaAtualInimigo(int dano) {
+        int vida = this.getVida();
+        setVida(vida -= dano);
+
+        if (vida <= 0) {
+            System.out.printf("Seu inimigo sofreu %d de dano%nSeu inimigo morreu!!%n!!! VITORIA !!!%n", dano);
+            System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        } else {
+            System.out.printf("Seu inimigo sofreu %d de dano%nVida atual do inimigo: %d%n", dano, getVida());
+            System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         }
     }
 }

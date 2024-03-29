@@ -1,8 +1,7 @@
-import java.util.Random;
 abstract class Jogador {
-    private int vida;
-    private int ataque;
-    private int armadura;
+    int vida;
+    int ataque;
+    int armadura;
 
     public Jogador(int vida, int ataque, int armadura) {
         this.vida = vida;
@@ -10,38 +9,35 @@ abstract class Jogador {
         this.armadura = armadura;
     }
 
-    public abstract int atacar();
+    public abstract int atacar(int dano, int armadura);
 
-    public boolean vidaAtual(int dano) {
-        if (dano >= vida) {
-            System.out.println("Você morreu.");
-            return true;
+    public void vidaAtual(int dano) {
+        setVida(vida -= dano);
+
+        if (vida <= 0) {
+            System.out.printf("Você sofreu %d de dano%nVocê morreu!!%n!!! GAME OVER !!!%n", dano);
+            System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~");
         } else {
-            vida -= dano;
-            System.out.println("Você sofreu isso de dano: " + dano + "\n Sua vida atual: " + vida );
-            return false;
+            System.out.printf("Você sofreu %d de dano%nVida atual: %d%n", dano, getVida());
+            System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~");
         }
     }
 
-    public int getVidaJogador() {
-        return vida;
+    public int getVida() {
+        return this.vida;
     }
-    public void setVidaJogador(int vida) {
+
+    public void setVida(int vida) {
         this.vida = vida;
     }
 
     public int getAtaque() {
         return ataque;
     }
-    public void setAtaque(int ataque) {
-        this.ataque = ataque;
-    }
 
-    public int getArmaduraJogador() {
+    public int getArmadura() {
         return armadura;
     }
-    public void setArmadura(int armadura) {
-        this.armadura = armadura;
-    }
+
 }
 
