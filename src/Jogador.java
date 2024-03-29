@@ -1,42 +1,30 @@
-import java.util.Random;
-public class Jogador {
-    Random random = new Random();
+abstract class Jogador {
+    int vida;
+    int ataque;
+    int armadura;
 
-    private int vida;
-    private int ataque;
-    private int armadura;
-
-    public Jogador(int armadura, int ataque) {
-        this.vida = 100; // Valor inicial de vida
-        this.ataque = ataque; // Valor inicial de ataque
+    public Jogador(int vida, int ataque, int armadura) {
+        this.vida = vida;
+        this.ataque = ataque;
         this.armadura = armadura;
     }
 
-    public int atacar() {
-        int dado = random.nextInt(20) + 1;
+    public abstract int atacar(int dano, int armadura);
 
-        if (dado >= 12) {
-            System.out.printf("Você tirou no dado: %d %nO inimigou sofreu esse dano: %d%n", dado, ataque);
-            return ataque;
-        } else {
-            System.out.printf("Você tirou no dado: %d %nO inimigou não sofreu dano.%n", dado);
-            return 0;
-        }
-    }
+    public void vidaAtual(int dano) {
+        setVida(vida -= dano);
 
-    public boolean estaVivo(int dano) {
-        if (dano >= vida) {
-            System.out.println("Você morreu.");
-            return true;
+        if (vida <= 0) {
+            System.out.printf("Você sofreu %d de dano%nVocê morreu!!%n!!! GAME OVER !!!%n", dano);
+            System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~");
         } else {
-            vida -= dano;
-            System.out.println("Você sofreu isso de dano: " + dano + "\n Sua vida atual: " + vida );
-            return false;
+            System.out.printf("Você sofreu %d de dano%nVida atual: %d%n", dano, getVida());
+            System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~");
         }
     }
 
     public int getVida() {
-        return vida;
+        return this.vida;
     }
 
     public void setVida(int vida) {
@@ -51,12 +39,5 @@ public class Jogador {
         return armadura;
     }
 
-    public void setAtaque(int ataque) {
-        this.ataque = ataque;
-    }
-
-    public void setArmadura(int armadura) {
-        this.armadura = armadura;
-    }
 }
 
