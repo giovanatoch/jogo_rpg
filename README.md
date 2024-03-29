@@ -12,7 +12,7 @@
 ### Classe JogoRPG:
 
 Método main(String[] args): Inicia o jogo.
-### 1- SClasse Jogo:
+### 1- Classe Jogo:
 
 Atributos jogador e inimigo.
 Método iniciarJogo(): Começa uma batalha entre jogador e inimigo.
