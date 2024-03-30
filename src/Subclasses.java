@@ -1,7 +1,8 @@
 import java.util.Random;
 class Guerreiro extends Jogador {
-    public Guerreiro() {
-        super(150, 10, 14);
+
+    public Guerreiro(String nome) {
+        super(150, 10, 14, nome);
     }
 
     @Override
@@ -21,8 +22,8 @@ class Guerreiro extends Jogador {
 }
 
 class Mago extends Jogador {
-    public Mago() {
-        super(125, 12, 12);
+    public Mago(String nome) {
+        super(125, 12, 12, nome);
     }
     @Override
     public int atacar(int dano, int armadura) {
@@ -43,7 +44,7 @@ class Mago extends Jogador {
 //INIMIGOS
 class Inimigo extends Jogador {
     public Inimigo() {
-        super(130, 11, 13);
+        super(130, 11, 13, "Grognar, o ABOMINÁVEL");
     }
 
     @Override
@@ -68,6 +69,7 @@ class Inimigo extends Jogador {
         if (vida <= 0) {
             System.out.printf("Seu inimigo sofreu %d de dano%nSeu inimigo morreu!!%n!!! VITORIA !!!%n", dano);
             System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+
         } else {
             System.out.printf("Seu inimigo sofreu %d de dano%nVida atual do inimigo: %d%n", dano, getVida());
             System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");

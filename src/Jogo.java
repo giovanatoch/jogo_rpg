@@ -14,12 +14,27 @@ public class Jogo {
         Scanner scanner = new Scanner(System.in);
         Random rand = new Random();
 
+        System.out.println("✧⋄⋆⋅⋆⋄✧⋄⋆⋅⋆⋄⋅✧⋄⋆⋅⋆⋄✧⋄⋆⋅⋆⋄✧⋄⋆⋅⋄⋆⋄✧⋄⋆⋅⋆⋄⋅✧⋄⋆⋅⋆⋄✧⋄⋆⋅⋆⋄⋅✧⋄⋆⋅⋆⋄✧⋄⋆⋅⋆⋄✧⋄⋄⋆⋅⋆⋄✧⋄⋆⋅⋆⋄✧⋅⋄⋆⋅⋆⋄✧⋄⋆⋅⋆⋄✧⋅⋄⋆⋅⋆⋄✧⋄⋆⋅⋆⋄✧");
+        System.out.println("""
+                ▀██▀▀▀▀█  ▀██                 █▀▀██▀▀█                 ▀██         ▀██▀▀█▄   ▀██▀▀█▄   ▄▄█▀▀▀▄█ \s
+                 ██  ▄     ██   ▄▄▄▄    ▄▄▄▄     ██      ▄▄▄▄    ▄▄▄▄   ██ ▄▄       ██   ██   ██   ██ ▄█▀     ▀ \s
+                 ██▀▀█     ██  ▀▀ ▄██  ██▄ ▀     ██    ▄█▄▄▄██ ▄█   ▀▀  ██▀ ██      ██▀▀█▀    ██▄▄▄█▀ ██    ▄▄▄▄\s
+                 ██        ██  ▄█▀ ██  ▄ ▀█▄▄    ██    ██      ██       ██  ██      ██   █▄   ██      ▀█▄    ██ \s
+                ▄██▄▄▄▄▄█ ▄██▄ ▀█▄▄▀█▀ █▀▄▄█▀   ▄██▄    ▀█▄▄▄▀  ▀█▄▄▄▀ ▄██▄ ██▄    ▄██▄  ▀█▀ ▄██▄      ▀▀█▄▄▄▀█ \s
+                """);
+        System.out.println("✧⋄⋆⋅⋆⋄✧⋄⋆⋅⋆⋄⋅✧⋄⋆⋅⋆⋄✧⋄⋆⋅⋆⋄✧⋄⋆⋅⋄⋆⋄✧⋄⋆⋅⋆⋄⋅✧⋄⋆⋅⋆⋄✧⋄⋆⋅⋆⋄⋅✧⋄⋆⋅⋆⋄✧⋄⋆⋅⋆⋄✧⋄⋄⋆⋅⋆⋄✧⋄⋆⋅⋆⋄✧⋅⋄⋆⋅⋆⋄✧⋄⋆⋅⋆⋄✧⋅⋄⋆⋅⋆⋄✧⋄⋆⋅⋆⋄✧");
+
         System.out.println("Bem-vindo ao jogo de RPG!");
 
         boolean exit = false;
         while (!exit) {
 
-            System.out.println("Escolha sua classe: ");
+            System.out.println("===================================");
+            System.out.println("Qual o seu nome?");
+            String nome = scanner.nextLine();
+            System.out.println("===================================");
+
+            System.out.printf("Escolha sua classe, %s: %n", nome);
             System.out.println("1. Guerreiro");
             System.out.println("2. Mago");
             int escolha = scanner.nextInt();
@@ -27,12 +42,12 @@ public class Jogo {
             switch (escolha) {
                 case 1:
                     System.out.println("Você escolheu o personagem Guerreiro.");
-                    jogador = new Guerreiro();
+                    jogador = new Guerreiro(nome);
                     exit = true;
                     break;
                 case 2:
                     System.out.println("Você escolheu o personagem Mago.");
-                    jogador = new Mago();
+                    jogador = new Mago(nome);
                     exit = true;
                     break;
                 default:
@@ -42,12 +57,71 @@ public class Jogo {
 
         System.out.println("A batalha está prestes a começar!");
         System.out.println("===================================");
-        System.out.printf("Jogador:%nVida: %d%nDano: %d%nArmadura: %d%n", jogador.getVida(),
-                          jogador.getAtaque(), jogador.getArmadura());
+
+        if (jogador instanceof Mago ) {
+            System.out.printf("""
+                                      .
+                                       .
+                             /^\\     .
+                        /\\   "V"
+                       /__\\   I      O  o             | Jogador: %s\s
+                      //..\\\\  I     .                 | Vida: %d \s
+                      \\].`[/  I                       | Dano: %d      \s
+                      /l\\/j\\  (]    .  O              | Armadura: %d \s
+                     /. ~~ ,\\/I          .
+                     \\\\L__j^\\/I       o
+                      \\/--v}  I     o   .
+                      |    |  I   _________
+                      |    |  I c(`       ')o
+                      |    l  I   \\.     ,/
+                    _/j  L l\\_!  _//^---^\\\\_
+                    """, jogador.getNome(), jogador.getVida(), jogador.getAtaque(), jogador.getArmadura());
+        }
+
+        if (jogador instanceof Guerreiro ) {
+            System.out.printf("""
+                          _,.
+                        ,` -.)
+                       ( _/-\\\\-._
+                      /,|`--._,-^|            ,
+                      \\_| |`-._/||          ,'|
+                        |  `-, / |         /  /
+                        |     || |        /  /           | Jogador: %s
+                         `r-._||/   __   /  /            | Vida: %d
+                     __,-<_     )`-/  `./  /             | Dano: %d  \s
+                    '  \\   `---'   \\   /  /              | Armadura: %d
+                        |           |./  /
+                        /           //  /
+                    \\_/' \\         |/  /
+                     |    |   _,^-'/  /
+                     |    , ``  (\\/  /_
+                      \\,.->._    \\X-=/^
+                      (  /   `-._//^`
+                       `Y-.____(__}
+                    """, jogador.getNome(), jogador.getVida(), jogador.getAtaque(), jogador.getArmadura());
+        }
+
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 
-        System.out.printf("Inimigo:%nVida: %d%nDano: %d%nArmadura: %d%n", inimigo.getVida(),
-                          inimigo.getAtaque(), inimigo.getArmadura());
+        System.out.printf("""
+                           _......._
+                       .-'.'.'.'.'.'.`-.
+                    /.'.'               '.\\
+                    |.'    _.--...--._     |
+                    \\    `._.-.....-._.'   /
+                    |     _..- .-. -.._   |                | Inimigo: %s
+                 .-.'    `.   ((@))  .'   '.-.             | Vida: %d
+                ( ^ \\      `--.   .-'     / ^ )            | Dano: %d
+                 /          .'     '.  .-    \\             | Armadura: %d
+                ( _.\\    \\ (_`-._.-'_)    /._\\)
+                 `-' \\   ' .--.          / `-'
+                     |  / /|_| `-._.'\\   |
+                     |   |       |_| |   /-.._
+                 _..-\\   `.--.______.'  |
+                     \\`.              .'
+                          `-..___..-`
+                 """, inimigo.getNome(), inimigo.getVida(), inimigo.getAtaque(), inimigo.getArmadura());
+
         System.out.println("===================================");
 
         System.out.println("Escolha um número de 1 a 10 para saber quem vai iniciar");

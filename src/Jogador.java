@@ -2,11 +2,13 @@ abstract class Jogador {
     int vida;
     int ataque;
     int armadura;
+    String nome;
 
-    public Jogador(int vida, int ataque, int armadura) {
+    public Jogador(int vida, int ataque, int armadura, String nome) {
         this.vida = vida;
         this.ataque = ataque;
         this.armadura = armadura;
+        this.nome = nome;
     }
 
     public abstract int atacar(int dano, int armadura);
@@ -25,6 +27,10 @@ abstract class Jogador {
 
     public int getVida() {
         return this.vida;
+    }
+
+    public String getNome() {
+        return nome;
     }
 
     public void setVida(int vida) {
