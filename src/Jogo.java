@@ -23,6 +23,7 @@ public class Jogo {
             System.out.println("1. Guerreiro");
             System.out.println("2. Mago");
             int escolha = scanner.nextInt();
+            scanner.nextLine();
 
             switch (escolha) {
                 case 1:
@@ -50,24 +51,28 @@ public class Jogo {
                           inimigo.getAtaque(), inimigo.getArmadura());
         System.out.println("===================================");
 
-        System.out.println("Escolha um número de 1 a 10 para saber quem vai iniciar");
+        System.out.println("Vamos jogar os dados para ver quem começa?");
+        System.out.println("Aperte Enter para jogar:");
+        scanner.nextLine();
 
-        int escolhaJogador = scanner.nextInt();
-        int escolhaInimigo = rand.nextInt(10) + 1;
+        int dadoJogador = rand.nextInt(6) + 1;
+        int dadoInimigo = rand.nextInt(6) + 1;
+        System.out.println("Seu dado caiu no número " + dadoJogador + "!");
+        System.out.println("O dado do inimigo caiu no número " + dadoInimigo + "!");
+
         boolean primeiroRound = true;
 
-        while (escolhaJogador == escolhaInimigo) {
-            System.out.println("Números iguais. Escolha novamente");
-            escolhaJogador = scanner.nextInt();
-            escolhaInimigo = rand.nextInt(10) + 1;
+        while (dadoJogador == dadoInimigo) {
+            System.out.println("\nVocês tiraram números iguais! Aperte Enter para jogar novamente: ");
+            scanner.nextLine();
+            dadoJogador = rand.nextInt(6) + 1;
+            dadoInimigo = rand.nextInt(6) + 1;
         }
 
-        if (escolhaJogador > escolhaInimigo) {
-            System.out.printf("Você escolheu %d e seu inimigo escolheu %d%nVocê começa%n", escolhaJogador,
-                              escolhaInimigo);
+        if (dadoJogador > dadoInimigo) {
+            System.out.println("\nVocê começa:");
         } else {
-            System.out.printf("Você escolheu %d e seu inimigo escolheu %d%nSeu inimigo começa%n", escolhaJogador,
-                              escolhaInimigo);
+            System.out.println("\nSeu inimigo começa: ");
             primeiroRound = false;
         }
         System.out.println("===================================");
