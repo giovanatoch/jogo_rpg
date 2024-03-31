@@ -7,7 +7,7 @@
 </p>
 
 ## 2 - Diagrama de classe
-![Foto do diagrama de clase](https://i.imgur.com/z6LoInB.png)
+![Foto do diagrama de clase](https://i.imgur.com/VR3kdw8.png)
 
 ## 3 - Regra de Negócio
 - Início do Jogo:
