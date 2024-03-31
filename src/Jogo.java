@@ -37,22 +37,27 @@ public class Jogo {
             System.out.printf("Escolha sua classe, %s: %n", nome);
             System.out.println("1. Guerreiro");
             System.out.println("2. Mago");
-            int escolha = scanner.nextInt();
-            scanner.nextLine();
-
-            switch (escolha) {
-                case 1:
-                    System.out.println("Você escolheu o personagem Guerreiro.");
-                    jogador = new Guerreiro(nome);
-                    exit = true;
-                    break;
-                case 2:
-                    System.out.println("Você escolheu o personagem Mago.");
-                    jogador = new Mago(nome);
-                    exit = true;
-                    break;
-                default:
+            if (scanner.hasNextInt()) {
+                int escolha = scanner.nextInt();
+                if (escolha >= 1 && escolha <= 2) {
+                    switch (escolha) {
+                        case 1:
+                            System.out.println("Você escolheu o personagem Guerreiro.");
+                            jogador = new Guerreiro(nome);
+                            exit = true;
+                            break;
+                        case 2:
+                            System.out.println("Você escolheu o personagem Mago.");
+                            jogador = new Mago(nome);
+                            exit = true;
+                            break;
+                    }
+                }else{
                     System.out.println("Escolha inválida. Tente novamente.");
+                }
+            }else {
+                String entradaInvalida = scanner.next();
+                System.out.println("Você digitou letra: " + entradaInvalida + ". Por favor, digite um número.");
             }
         }
 
