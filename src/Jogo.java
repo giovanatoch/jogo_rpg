@@ -26,29 +26,35 @@ public class Jogo {
 
         System.out.println("Bem-vindo ao jogo de RPG!");
 
+        System.out.println("===================================");
+        System.out.println("Qual o seu nome?");
+        String nome = scanner.nextLine();
+        System.out.println("===================================");
+
         boolean exit = false;
         while (!exit) {
 
-            System.out.println("===================================");
-            System.out.println("Qual o seu nome?");
-            String nome = scanner.nextLine();
-            System.out.println("===================================");
-
             System.out.printf("Escolha sua classe, %s: %n", nome);
-            System.out.println("1. Guerreiro");
-            System.out.println("2. Mago");
+            System.out.println("1. Guerreiro(a)");
+            System.out.println("2. Mago(a)");
+            System.out.println("3. Druida");
             int escolha = scanner.nextInt();
             scanner.nextLine();
 
             switch (escolha) {
                 case 1:
-                    System.out.println("Você escolheu o personagem Guerreiro.");
+                    System.out.println("Você escolheu a classe Guerreiro(a).");
                     jogador = new Guerreiro(nome);
                     exit = true;
                     break;
                 case 2:
-                    System.out.println("Você escolheu o personagem Mago.");
+                    System.out.println("Você escolheu a classe personagem Mago(a).");
                     jogador = new Mago(nome);
+                    exit = true;
+                    break;
+                case 3:
+                    System.out.println("Você escolheu a classe personagem Druida.");
+                    jogador = new Druida(nome);
                     exit = true;
                     break;
                 default:
@@ -65,10 +71,10 @@ public class Jogo {
                                        .
                              /^\\     .
                         /\\   "V"
-                       /__\\   I      O  o             | Jogador: %s\s
-                      //..\\\\  I     .                 | Vida: %d \s
+                       /__\\   I      O  o             | Jogador(a): %s\s
+                      //..\\\\  I     .                | Vida: %d \s
                       \\].`[/  I                       | Dano: %d      \s
-                      /l\\/j\\  (]    .  O              | Armadura: %d \s
+                      /l\\/j\\  (]    .  O             | Armadura: %d \s
                      /. ~~ ,\\/I          .
                      \\\\L__j^\\/I       o
                       \\/--v}  I     o   .
@@ -87,10 +93,10 @@ public class Jogo {
                       /,|`--._,-^|            ,
                       \\_| |`-._/||          ,'|
                         |  `-, / |         /  /
-                        |     || |        /  /           | Jogador: %s
+                        |     || |        /  /           | Jogador(a): %s
                          `r-._||/   __   /  /            | Vida: %d
                      __,-<_     )`-/  `./  /             | Dano: %d  \s
-                    '  \\   `---'   \\   /  /              | Armadura: %d
+                    '  \\   `---'   \\   /  /            | Armadura: %d
                         |           |./  /
                         /           //  /
                     \\_/' \\         |/  /
@@ -99,6 +105,30 @@ public class Jogo {
                       \\,.->._    \\X-=/^
                       (  /   `-._//^`
                        `Y-.____(__}
+                    """, jogador.getNome(), jogador.getVida(), jogador.getAtaque(), jogador.getArmadura());
+        }
+
+        if (jogador instanceof Druida ) {
+            System.out.printf("""
+                                       ;
+                                       `,
+                                      ' :.
+                                __      `;.
+                              /' /\\   ,   \\                          
+                            /   |ee|      `;
+                           (    |_,| ,     `,                  | Jogador(a): %s
+                            )  , \\ '       `:                 | Vida: %d
+                           |    ""\""----,__,_.____,_  \s      | Dano: %d  \s
+                           ;      _     |--,_;    '            | Armadura: %d
+                          ,     ,' `"---'  ,: 
+                          |    ,  : /,     ,'
+                          |       ,/'     ,;
+                          |   '   :|  ,   /'
+                          ,        |    ,;
+                         ,         |  , :'
+                         |         `   ,'
+                        ,'          `  ;
+                    __==' ___, pb __/_
                     """, jogador.getNome(), jogador.getVida(), jogador.getAtaque(), jogador.getArmadura());
         }
 
@@ -112,8 +142,8 @@ public class Jogo {
                     \\    `._.-.....-._.'   /
                     |     _..- .-. -.._   |                | Inimigo: %s
                  .-.'    `.   ((@))  .'   '.-.             | Vida: %d
-                ( ^ \\      `--.   .-'     / ^ )            | Dano: %d
-                 /          .'     '.  .-    \\             | Armadura: %d
+                ( ^ \\      `--.   .-'     / ^ )           | Dano: %d
+                 /          .'     '.  .-    \\            | Armadura: %d
                 ( _.\\    \\ (_`-._.-'_)    /._\\)
                  `-' \\   ' .--.          / `-'
                      |  / /|_| `-._.'\\   |
