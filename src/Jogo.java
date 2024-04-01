@@ -26,13 +26,13 @@ public class Jogo {
 
         System.out.println("Bem-vindo ao jogo de RPG!");
 
+        System.out.println("===================================");
+        System.out.println("Qual o seu nome?");
+        String nome = scanner.nextLine();
+        System.out.println("===================================");
+
         boolean exit = false;
         while (!exit) {
-
-            System.out.println("===================================");
-            System.out.println("Qual o seu nome?");
-            String nome = scanner.nextLine();
-            System.out.println("===================================");
 
             System.out.printf("Escolha sua classe, %s: %n", nome);
             System.out.println("1. Guerreiro");
