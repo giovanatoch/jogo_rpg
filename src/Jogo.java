@@ -18,9 +18,9 @@ public class Jogo {
 
         boolean exit = false;
 
-      retornarEscolhaJogador(nome, exit);
+        retornarEscolhaJogador(nome, exit);
 
-        if (jogador instanceof Mago ) {
+        if (jogador instanceof Mago) {
             System.out.printf("""
                                       .
                                        .
@@ -40,7 +40,7 @@ public class Jogo {
                     """, jogador.getNome(), jogador.getVida(), jogador.getAtaque(), jogador.getArmadura());
         }
 
-        if (jogador instanceof Guerreiro ) {
+        if (jogador instanceof Guerreiro) {
             System.out.printf("""
                           _,.
                         ,` -.)
@@ -63,7 +63,7 @@ public class Jogo {
                     """, jogador.getNome(), jogador.getVida(), jogador.getAtaque(), jogador.getArmadura());
         }
 
-        if (jogador instanceof Druida ) {
+        if (jogador instanceof Druida) {
             System.out.printf("""
                                        ;
                                        `,
@@ -135,8 +135,7 @@ public class Jogo {
         }
     }
 
-
-    private String mostrarNomeJogador(){
+    private String mostrarNomeJogador() {
         System.out.println("✧⋄⋆⋅⋆⋄✧⋄⋆⋅⋆⋄⋅✧⋄⋆⋅⋆⋄✧⋄⋆⋅⋆⋄✧⋄⋆⋅⋄⋆⋄✧⋄⋆⋅⋆⋄⋅✧⋄⋆⋅⋆⋄✧⋄⋆⋅⋆⋄⋅✧⋄⋆⋅⋆⋄✧⋄⋆⋅⋆⋄✧⋄⋄⋆⋅⋆⋄✧⋄⋆⋅⋆⋄✧⋅⋄⋆⋅⋆⋄✧⋄⋆⋅⋆⋄✧⋅⋄⋆⋅⋆⋄✧⋄⋆⋅⋆⋄✧");
         System.out.println("""
                 ▀██▀▀▀▀█  ▀██                 █▀▀██▀▀█                 ▀██         ▀██▀▀█▄   ▀██▀▀█▄   ▄▄█▀▀▀▄█ \s
@@ -156,14 +155,13 @@ public class Jogo {
         return nome;
     }
 
-
-    private void retornarEscolhaJogador(String nome, boolean exit){
+    private void retornarEscolhaJogador(String nome, boolean exit) {
         System.out.printf("Escolha sua classe, %s: %n", nome);
         System.out.println("1. Guerreiro(a)");
         System.out.println("2. Mago(a)");
         System.out.println("3. Druida");
         int escolha = 0;
-        while(!exit) {
+        while (!exit) {
             try {
                 String escolhaJogador = scanner.next();
                 escolha = Integer.parseInt(escolhaJogador);
@@ -171,33 +169,29 @@ public class Jogo {
                     System.out.println("Número inválido, tente novamente! ");
                     String novaTentativa = scanner.next();
                     escolha = Integer.parseInt(novaTentativa);
-                }else {
-                    exit= true;
+                } else {
+                    exit = true;
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Entrada inválida. Digite um número novamente.");
             }
         }
-            switch (escolha) {
-                case 1:
-                    System.out.println("Você escolheu a classe Guerreiro(a).");
-                    jogador = new Guerreiro(nome);
-                    exit = true;
-                    break;
-                case 2:
-                    System.out.println("Você escolheu a classe personagem Mago(a).");
-                    jogador = new Mago(nome);
-                    exit = true;
-                    break;
-                case 3:
-                    System.out.println("Você escolheu a classe personagem Druida.");
-                    jogador = new Druida(nome);
-                    exit = true;
-                    break;
-                default:
-                    System.out.println("Escolha inválida. Tente novamente.");
-            }
-//        }
+        switch (escolha) {
+            case 1:
+                System.out.println("Você escolheu a classe Guerreiro(a).");
+                jogador = new Guerreiro(nome);
+                break;
+            case 2:
+                System.out.println("Você escolheu a classe personagem Mago(a).");
+                jogador = new Mago(nome);
+                break;
+            case 3:
+                System.out.println("Você escolheu a classe personagem Druida.");
+                jogador = new Druida(nome);
+                break;
+            default:
+                System.out.println("Escolha inválida. Tente novamente.");
+        }
 
         System.out.println("A batalha está prestes a começar!");
         System.out.println("===================================");
