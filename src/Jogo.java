@@ -169,6 +169,7 @@ public class Jogo {
                     System.out.println("Número inválido, tente novamente! ");
                     String novaTentativa = scanner.next();
                     escolha = Integer.parseInt(novaTentativa);
+                    System.out.println("Tente novamente! Opções: 1-Guerreiro  2-Mago  3-Druida");
                 } else {
                     exit = true;
                 }
