@@ -162,9 +162,22 @@ public class Jogo {
         System.out.println("1. Guerreiro(a)");
         System.out.println("2. Mago(a)");
         System.out.println("3. Druida");
-        int escolha = scanner.nextInt();
-        scanner.nextLine();
-        while (!exit) {
+        int escolha = 0;
+        while(!exit) {
+            try {
+                String escolhaJogador = scanner.next();
+                escolha = Integer.parseInt(escolhaJogador);
+                if (escolha != 1 && escolha != 2 && escolha != 3) {
+                    System.out.println("Número inválido, tente novamente! ");
+                    String novaTentativa = scanner.next();
+                    escolha = Integer.parseInt(novaTentativa);
+                }else {
+                    exit= true;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Entrada inválida. Digite um número novamente.");
+            }
+        }
             switch (escolha) {
                 case 1:
                     System.out.println("Você escolheu a classe Guerreiro(a).");
@@ -184,7 +197,7 @@ public class Jogo {
                 default:
                     System.out.println("Escolha inválida. Tente novamente.");
             }
-        }
+//        }
 
         System.out.println("A batalha está prestes a começar!");
         System.out.println("===================================");
