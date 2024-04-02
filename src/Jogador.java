@@ -13,7 +13,7 @@ abstract class Jogador {
 
     public abstract int atacar(int dano, int armadura);
 
-    public void vidaAtual(int dano) {
+    public void verificarVida(int dano) {
         setVida(vida -= dano);
 
         if (vida <= 0) {
