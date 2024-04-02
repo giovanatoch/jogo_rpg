@@ -18,9 +18,7 @@ public class Jogo {
 
         boolean exit = false;
 
-        int escolha = retornarEscolhaJogador(nome);
-
-        mostrarClasseEscolhida(escolha, nome, exit);
+      retornarEscolhaJogador(nome, exit);
 
         if (jogador instanceof Mago ) {
             System.out.printf("""
@@ -159,17 +157,13 @@ public class Jogo {
     }
 
 
-    private int retornarEscolhaJogador(String nome){
+    private void retornarEscolhaJogador(String nome, boolean exit){
         System.out.printf("Escolha sua classe, %s: %n", nome);
         System.out.println("1. Guerreiro(a)");
         System.out.println("2. Mago(a)");
         System.out.println("3. Druida");
         int escolha = scanner.nextInt();
         scanner.nextLine();
-        return escolha;
-    }
-
-    private void mostrarClasseEscolhida(int escolha, String nome, boolean exit){
         while (!exit) {
             switch (escolha) {
                 case 1:
