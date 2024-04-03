@@ -1,4 +1,4 @@
-public class Main {
+public class JogoRPG {
     public static void main(String[] args) {
         // Declaração da Classe Jogo
         Jogo jogo = new Jogo();
