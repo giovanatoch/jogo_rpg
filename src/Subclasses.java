@@ -84,7 +84,7 @@ class Inimigo extends Jogador {
         }
     }
 
-    public void vidaAtualInimigo(int dano) {
+    public void verificarVida(int dano) {
         int vida = this.getVida();
         setVida(vida -= dano);
 
