@@ -5,6 +5,7 @@ public class Jogo {
     private Jogador jogador;
     private final Inimigo inimigo;
 
+    // Criação e atribuição da variavel inimigo
     public Jogo() {
         this.jogador = null;
         this.inimigo = new Inimigo();
@@ -12,6 +13,7 @@ public class Jogo {
     Scanner scanner = new Scanner(System.in);
     Random rand = new Random();
 
+    // Metodo responsavel por retornar variaveis de nome e subclasse escolhidas pelo Jogador, variaveis de Inimigo,quem começa a batalha, e looping de batalha
     public void iniciarJogo() {
 
         String nome = mostrarNomeJogador();
@@ -109,9 +111,9 @@ public class Jogo {
                  """, inimigo.getNome(), inimigo.getVida(), inimigo.getAtaque(), inimigo.getArmadura());
 
         System.out.println("===================================");
-
         boolean primeiroRound = sortearQuemComecaOJogo();
         System.out.println("===================================");
+
         while (true) {
             if (primeiroRound) {
                 inimigo.verificarVida(jogador.atacar(jogador.ataque, inimigo.armadura));
@@ -135,6 +137,7 @@ public class Jogo {
         }
     }
 
+    // Metodo responsavel por retornar boas vindas e atribuir nome do jogador
     private String mostrarNomeJogador() {
         System.out.println("✧⋄⋆⋅⋆⋄✧⋄⋆⋅⋆⋄⋅✧⋄⋆⋅⋆⋄✧⋄⋆⋅⋆⋄✧⋄⋆⋅⋄⋆⋄✧⋄⋆⋅⋆⋄⋅✧⋄⋆⋅⋆⋄✧⋄⋆⋅⋆⋄⋅✧⋄⋆⋅⋆⋄✧⋄⋆⋅⋆⋄✧⋄⋄⋆⋅⋆⋄✧⋄⋆⋅⋆⋄✧⋅⋄⋆⋅⋆⋄✧⋄⋆⋅⋆⋄✧⋅⋄⋆⋅⋆⋄✧⋄⋆⋅⋆⋄✧");
         System.out.println("""
@@ -155,6 +158,7 @@ public class Jogo {
         return nome;
     }
 
+    // Metodo responsavel por retornar e atribuir a escolha de subclasse do Jogador
     private void retornarEscolhaJogador(String nome, boolean exit) {
         System.out.printf("Escolha sua classe, %s: %n", nome);
         System.out.println("1. Guerreiro(a)");
@@ -195,6 +199,7 @@ public class Jogo {
         System.out.println("===================================");
     }
 
+    // Metodo responsavel por verificar de forma aleatoria quem começa a batalha
     private boolean sortearQuemComecaOJogo() {
 
         System.out.println("Vamos jogar os dados para ver quem começa?");
