@@ -1,10 +1,12 @@
 import java.util.Random;
 class Guerreiro extends Jogador {
 
+    // Constructor com valores fixos para subclasse Guerreiro
     public Guerreiro(String nome) {
         super(150, 10, 14, nome);
     }
 
+    // Metodo responsavel por atacar o oponente, recebendo parametros de dano do atacante e armadura do oponente
     @Override
     public int atacar(int dano, int armadura) {
         Random rand = new Random();
@@ -22,9 +24,13 @@ class Guerreiro extends Jogador {
 }
 
 class Mago extends Jogador {
+
+    // Constructor com valores fixos para subclasse Mago
     public Mago(String nome) {
         super(125, 12, 12, nome);
     }
+
+    // Metodo responsavel por atacar o oponente, recebendo parametros de dano do atacante e armadura do oponente
     @Override
     public int atacar(int dano, int armadura) {
         Random rand = new Random();
@@ -43,10 +49,12 @@ class Mago extends Jogador {
 
 class Druida extends Jogador {
 
+    // Constructor com valores fixos para subclasse Druida
     public Druida(String nome) {
         super(150, 12, 14, nome);
     }
 
+    // Metodo responsavel por atacar o oponente, recebendo parametros de dano do atacante e armadura do oponente
     @Override
     public int atacar(int dano, int armadura) {
         Random rand = new Random();
@@ -65,10 +73,13 @@ class Druida extends Jogador {
 
 //INIMIGOS
 class Inimigo extends Jogador {
+
+    // Constructor com valores fixos para subclasse Inimigo
     public Inimigo() {
         super(130, 11, 13, "Grognar, o ABOMINÁVEL");
     }
 
+    // Metodo responsavel por atacar o oponente, recebendo parametros de dano do atacante e armadura do oponente
     @Override
     public int atacar(int dano, int armadura) {
         Random rand = new Random();
@@ -84,6 +95,7 @@ class Inimigo extends Jogador {
         }
     }
 
+    // Metodo responsavel por receber um dano via parametro do atacante e abater na vida do oponente
     public void verificarVida(int dano) {
         int vida = this.getVida();
         setVida(vida -= dano);
